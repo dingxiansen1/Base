@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dd.app">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".app"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Base">
+        <activity
+            android:name="com.dd.app.main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dd.app.test.TestActivity" />
+        <activity android:name=".test.DialogActivity" />
+        <activity android:name=".recyclerview.ui.activity.RecycleActivity" />
+        <activity android:name=".main.EventBusActivity" />
+        <activity android:name=".toast.ToastActivity" />
+        <activity android:name=".test.NightActivity" />
+    </application>
+
+</manifest>

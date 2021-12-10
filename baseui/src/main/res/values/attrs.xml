@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+          底部导航栏
+    -->
+    <attr name="icon" format="reference"></attr>
+    <attr name="title" format="string"></attr>
+    <attr name="floating" format="boolean"></attr>
+    <attr name="showFragment" format="boolean"></attr>
+    <declare-styleable name="One_StyleBottomLayout">
+        <attr name="oneItemPadding" format="dimension"></attr>
+        <attr name="oneItemIconTint" format="color|reference"></attr>
+        <attr name="oneItemIconWidth" format="dimension"></attr>
+        <attr name="oneItemIconHeight" format="dimension"></attr>
+        <attr name="oneItemTextColor" format="color|reference"></attr>
+        <attr name="oneItemTopLineColor" format="color|reference"></attr>
+        <attr name="oneItemTextSize" format="dimension"></attr>
+        <attr name="oneItemTextTopMargin" format="dimension"></attr>
+        <attr name="oneFloatingEnable" format="boolean"></attr>
+        <attr name="oneFloatingPadding" format="dimension"></attr>
+        <attr name="oneFloatingUp" format="dimension"></attr>
+        <attr name="oneMenu" format="reference"></attr>
+    </declare-styleable>
+
+
+    <!-- 流布局-->
+    <declare-styleable name="FlowLayout">
+        <!--支持折叠 -->
+        <attr name="flow_fold" format="boolean" />
+        <!--折叠时的行数（支持折叠情况下） -->
+        <attr name="flow_foldLines" format="integer" />
+        <!--平均分配 -->
+        <attr name="flow_equally" format="boolean" />
+        <!--平局分配一行的数量 -->
+        <attr name="flow_equally_count" format="integer" />
+        <!--水平间距 -->
+        <attr name="flow_horizontalSpacing" format="dimension" />
+        <!--竖直间距 -->
+        <attr name="flow_verticalSpacing" format="dimension" />
+        <!--左右对齐 -->
+        <attr name="flow_gravity">
+            <enum name="LEFT" value="0" />
+            <enum name="RIGHT" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!--下拉刷新上拉加载布局-->
+    <declare-styleable name="PageRefreshLayout">
+        <attr name="StateLayout" format="boolean" />
+        <attr name="empty_layout" format="reference" />
+        <attr name="error_layout" format="reference" />
+        <attr name="loading_layout" format="reference" />
+        <!--        启用缺省页-->
+        <attr name="stateEnabled" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="StateLayout">
+        <attr name="empty_layouts" format="reference" />
+        <attr name="error_layouts" format="reference" />
+        <attr name="loading_layouts" format="reference" />
+    </declare-styleable>
+</resources>

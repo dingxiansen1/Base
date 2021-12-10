@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/first_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="常规"
+        />
+    <Button
+        android:id="@+id/second_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="极简"
+        />
+    <Button
+        android:id="@+id/third_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="底部消息"
+        />
+    <Button
+        android:id="@+id/fourth_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="底部分享图片"
+        />
+    <Button
+        android:id="@+id/fifth_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="底部列表"
+        />
+
+</LinearLayout>

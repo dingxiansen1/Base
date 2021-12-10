@@ -1,0 +1,176 @@
+
+
+package com.dd.baseui.recyclerview.utils
+
+import android.app.Dialog
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import androidx.annotation.DrawableRes
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.dd.baseui.recyclerview.BindingAdapter
+import com.dd.baseui.recyclerview.DefaultDecoration
+import com.dd.baseui.recyclerview.annotaion.DividerOrientation
+import com.dd.baseui.recyclerview.layoutmanager.HoverGridLayoutManager
+import com.dd.baseui.recyclerview.layoutmanager.HoverLinearLayoutManager
+import com.dd.baseui.recyclerview.layoutmanager.HoverStaggeredGridLayoutManager
+
+//<editor-fold desc="数据集">
+/**
+ * 如果Adapter是[BindingAdapter]则返回对象, 否则抛出异常
+ * @exception NullPointerException
+ */
+val RecyclerView.bindingAdapter
+    get() = adapter as? BindingAdapter
+        ?: throw NullPointerException("RecyclerView has no BindingAdapter")
+
+/**
+ * 数据模型集合
+ */
+var RecyclerView.models
+    get() = bindingAdapter.models
+    set(value) {
+        bindingAdapter.models = value
+    }
+
+/**
+ * 可增删的数据模型集合, 本质上就是返回可变的models. 假设未赋值给models则将抛出异常为[ClassCastException]
+ */
+var RecyclerView.mutable
+    get() = bindingAdapter.models as? ArrayList ?: throw NullPointerException("[BindingAdapter.models] is null, no data")
+    set(value) {
+        bindingAdapter.models = value
+    }
+//</editor-fold>
+
+/**
+ * 添加数据
+ * @param models 被添加的数据
+ * @param animation 添加数据是否显示动画
+ */
+fun RecyclerView.addModels(models: List<Any?>?, animation: Boolean = true) {
+    bindingAdapter.addModels(models, animation)
+}
+
+//<editor-fold desc="配置列表">
+/**
+ * 设置适配器
+ */
+fun RecyclerView.setup(block: BindingAdapter.(RecyclerView) -> Unit): BindingAdapter {
+    val adapter = BindingAdapter()
+    adapter.block(this)
+    this.adapter = adapter
+    return adapter
+}
+//</editor-fold>
+
+
+//<editor-fold desc="布局管理器">
+
+/**
+ * 创建[HoverLinearLayoutManager]  线性列表
+ * @param orientation 列表方向
+ * @param reverseLayout 是否反转列表
+ * @param scrollEnabled 是否允许滚动
+ */
+fun RecyclerView.linear(
+    @RecyclerView.Orientation orientation: Int = VERTICAL,
+    reverseLayout: Boolean = false,
+    scrollEnabled: Boolean = true,
+    stackFromEnd: Boolean = false
+): RecyclerView {
+    layoutManager = HoverLinearLayoutManager(context, orientation, reverseLayout).apply {
+        setScrollEnabled(scrollEnabled)
+        this.stackFromEnd = stackFromEnd
+    }
+    return this
+}
+
+/**
+ * 创建[HoverGridLayoutManager] 网格列表
+ * @param spanCount 网格跨度数量
+ * @param orientation 列表方向
+ * @param reverseLayout 是否反转
+ * @param scrollEnabled 是否允许滚动
+ */
+fun RecyclerView.grid(
+    spanCount: Int = 1,
+    @RecyclerView.Orientation orientation: Int = VERTICAL,
+    reverseLayout: Boolean = false,
+    scrollEnabled: Boolean = true,
+): RecyclerView {
+    layoutManager = HoverGridLayoutManager(context, spanCount, orientation, reverseLayout).apply {
+        setScrollEnabled(scrollEnabled)
+    }
+    return this
+}
+
+/**
+ * 创建[HoverStaggeredGridLayoutManager] 交错列表
+ * @param spanCount 网格跨度数量
+ * @param orientation 列表方向
+ * @param reverseLayout 是否反转
+ * @param scrollEnabled 是否允许滚动
+ */
+fun RecyclerView.staggered(
+    spanCount: Int,
+    @RecyclerView.Orientation orientation: Int = VERTICAL,
+    reverseLayout: Boolean = false,
+    scrollEnabled: Boolean = true
+): RecyclerView {
+    layoutManager = HoverStaggeredGridLayoutManager(spanCount, orientation).apply {
+        setScrollEnabled(scrollEnabled)
+        this.reverseLayout = reverseLayout
+    }
+    return this
+}
+//</editor-fold>
+
+//<editor-fold desc="分割线">
+
+/**
+ * 函数配置分割线
+ * 具体配置参数查看[DefaultDecoration]
+ */
+fun RecyclerView.divider(
+    block: DefaultDecoration.() -> Unit
+): RecyclerView {
+    val itemDecoration = DefaultDecoration(context).apply(block)
+    addItemDecoration(itemDecoration)
+    return this
+}
+
+/**
+ * 指定Drawable资源为分割线, 分割线的间距和宽度应在资源文件中配置
+ * @param drawable 描述分割线的drawable
+ * @param orientation 分割线方向, 仅[androidx.recyclerview.widget.GridLayoutManager]需要使用此参数, 其他LayoutManager都是根据其方向自动推断
+ */
+fun RecyclerView.divider(
+    @DrawableRes drawable: Int,
+    orientation: DividerOrientation = DividerOrientation.HORIZONTAL
+): RecyclerView {
+    return divider {
+        setDrawable(drawable)
+        this.orientation = orientation
+    }
+}
+//</editor-fold>
+
+
+//<editor-fold desc="对话框">
+/**
+ *  快速为对话框创建一个列表
+ */
+fun Dialog.setup(block: BindingAdapter.(RecyclerView) -> Unit): Dialog {
+    val context = context
+    val recyclerView = RecyclerView(context)
+    recyclerView.setup(block)
+    recyclerView.layoutManager = LinearLayoutManager(context)
+    recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+    setContentView(recyclerView)
+    return this
+}
+//</editor-fold>
+
+
+

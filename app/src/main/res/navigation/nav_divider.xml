@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_divider.xml"
+    app:startDestination="@id/linearHorizontalFragment">
+
+    <fragment
+        android:id="@+id/linearHorizontalFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.divider.LinearHorizontalDividerFragment"
+        android:label="线性列表-水平分割线"
+        tools:layout="@layout/fragment_linear_horizontal_divider" />
+    <fragment
+        android:id="@+id/gridDividerFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.divider.GridDividerFragment"
+        android:label="网格列表-网格分割线"
+        tools:layout="@layout/fragment_grid_divider" />
+    <fragment
+        android:id="@+id/gridHorizontalDividerFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.divider.GridHorizontalDividerFragment"
+        android:label="网格列表-水平分割线"
+        tools:layout="@layout/fragment_grid_horizontal_divider" />
+    <fragment
+        android:id="@+id/gridVerticalDividerFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.divider.GridVerticalDividerFragment"
+        android:label="网格列表-垂直分割线"
+        tools:layout="@layout/fragment_grid_vertical_divider" />
+    <fragment
+        android:id="@+id/linearVerticalDividerFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.divider.LinearVerticalDividerFragment"
+        android:label="线性列表-垂直分割线"
+        tools:layout="@layout/fragment_linear_vertical_divider" />
+    <fragment
+        android:id="@+id/staggeredDividerFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.divider.StaggeredDividerFragment"
+        android:label="交错列表-网格分割线"
+        tools:layout="@layout/fragment_staggered_divider" />
+
+</navigation>

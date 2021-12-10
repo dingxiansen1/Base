@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ms_shape_radius">12dp</dimen>
+    <dimen name="ms_shape_width">1px</dimen>
+    <!--  dialog 底部按钮高度  -->
+    <dimen name="ms_dialog_bottom_height">48dp</dimen>
+</resources>

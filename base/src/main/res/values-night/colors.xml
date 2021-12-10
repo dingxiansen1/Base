@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="permissionx_default_dialog_bg">#595656</color>
+    <color name="permissionx_split_line">#e0e0e0</color>
+    <color name="permissionx_tint_color">#1972e8</color>
+    <color name="permissionx_text_color">#212121</color>
+
+    <color name="base_white">#FFFFFF</color>
+
+    <color name="background">#1E1E1E</color>
+    <!--字体颜色-->
+    <color name="text">#FAF4F4</color>
+    <color name="textSecond">#A6A4A4</color>
+    <!--通用颜色-->
+    <color name="color_FFFFFF">#FFFFFF</color>
+    <color name="color_EEE8CD">#EEE8CD</color>
+    <color name="color_00000000">#00000000</color>
+    <color name="colorSurface">#121212</color>
+</resources>

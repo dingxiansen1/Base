@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main.xml"
+    app:startDestination="@id/simpleFragment">
+
+    <fragment
+        android:id="@+id/multiTypeFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.MultiTypeFragment"
+        android:label="多类型"
+        tools:layout="@layout/fragment_multi_type" />
+    <fragment
+        android:id="@+id/checkModeFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.CheckModeFragment"
+        android:label="选择模式"
+        tools:layout="@layout/fragment_check_mode" />
+    <fragment
+        android:id="@+id/stateLayoutFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.StateLayoutFragment"
+        android:label="缺省状态"
+        tools:layout="@layout/fragment_state_layout" />
+    <fragment
+        android:id="@+id/swipeFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.SwipeFragment"
+        android:label="侧滑"
+        tools:layout="@layout/fragment_swipe" />
+    <fragment
+        android:id="@+id/oneMoreTypeFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.OneMoreTypeFragment"
+        android:label="一对多"
+        tools:layout="@layout/fragment_one_more_type" />
+    <fragment
+        android:id="@+id/flexBoxFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.FlexBoxFragment"
+        android:label="伸缩布局"
+        tools:layout="@layout/fragment_flex_box" />
+    <fragment
+        android:id="@+id/headerFooterFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.HeaderFooterFragment"
+        android:label="头|脚布局"
+        tools:layout="@layout/fragment_header_footer" />
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.GroupFragment"
+        android:label="分组"
+        tools:layout="@layout/fragment_group" />
+    <fragment
+        android:id="@+id/refreshFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.RefreshFragment"
+        android:label="刷新列表"
+        tools:layout="@layout/fragment_refresh" />
+    <fragment
+        android:id="@+id/preloadFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.PreloadFragment"
+        android:label="预加载"
+        tools:layout="@layout/fragment_preload" />
+    <fragment
+        android:id="@+id/upFetchFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.UpFetchFragment"
+        android:label="预拉取"
+        tools:layout="@layout/fragment_up_fetch" />
+    <fragment
+        android:id="@+id/simpleFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.SimpleFragment"
+        android:label="简单列表"
+        tools:layout="@layout/fragment_simple" />
+    <fragment
+        android:id="@+id/interfaceFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.InterfaceFragment"
+        android:label="接口类型绑定"
+        tools:layout="@layout/fragment_interface" />
+
+    <include app:graph="@navigation/nav_divider" />
+
+    <include app:graph="@navigation/nav_hover" />
+
+    <fragment
+        android:id="@+id/dragFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.DragFragment"
+        android:label="拖拽"
+        tools:layout="@layout/fragment_drag" />
+    <fragment
+        android:id="@+id/coordinatorLayoutFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.CoordinatorLayoutFragment"
+        android:label="CoordinatorLayout" />
+    <fragment
+        android:id="@+id/viewBindingFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.ViewBindingFragment"
+        android:label="ViewBindingFragment" />
+
+</navigation>

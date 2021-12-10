@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_hover_header.xml"
+    app:startDestination="@id/hoverLinearFragment">
+
+    <fragment
+        android:id="@+id/hoverLinearFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.hover.HoverGridDividerFragment"
+        android:label="列表悬停"
+        tools:layout="@layout/fragment_hover" />
+
+    <fragment
+        android:id="@+id/hoverGridFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.hover.HoverLinearFragment"
+        android:label="网格悬停"
+        tools:layout="@layout/fragment_hover" />
+
+    <fragment
+        android:id="@+id/hoverGridDividerFragment"
+        android:name="com.dd.app.recyclerview.ui.fragment.hover.HoverGridDividerFragment"
+        android:label="网格悬停均布间距" />
+
+</navigation>
