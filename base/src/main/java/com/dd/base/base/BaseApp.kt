@@ -1,6 +1,7 @@
 package com.dd.base.base
 
 import android.app.Application
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dd.base.config.AppConstants
@@ -9,6 +10,10 @@ import com.dd.base.BuildConfig
 import com.tencent.mmkv.MMKV
 
 open class BaseApp :Application(){
+
+    companion object{
+        var isNight :Boolean = false
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -33,7 +38,8 @@ open class BaseApp :Application(){
     }
 
     private fun initNightMode() {
-        if (SpHelper.getBoolean(AppConstants.SpKey.FOLLOW_SYSTEM))//跟随系统
+        isNight=SpHelper.getBoolean(AppConstants.SpKey.FOLLOW_SYSTEM)
+        if (isNight)//跟随系统
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         else
             AppCompatDelegate.setDefaultNightMode(

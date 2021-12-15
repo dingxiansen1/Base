@@ -59,13 +59,11 @@ abstract class BaseVBActivity<VB: ViewBinding> : AppCompatActivity() {
     }
 
     fun updataNightModel(){
-        val isNight= !SpHelper.getBoolean(AppConstants.SpKey.NIGHT_MODE)
-        SpHelper.put(AppConstants.SpKey.NIGHT_MODE,isNight)
+        BaseApp.isNight = !BaseApp.isNight
+        SpHelper.put(AppConstants.SpKey.NIGHT_MODE,BaseApp.isNight)
         AppCompatDelegate.setDefaultNightMode(
-            if (isNight) AppCompatDelegate.MODE_NIGHT_YES//夜间模式
+            if (BaseApp.isNight) AppCompatDelegate.MODE_NIGHT_YES//夜间模式
             else AppCompatDelegate.MODE_NIGHT_NO//白天
         )
-        this.statusBarColorRes(R.color.background)
-        this.darkMode(!isNight)
     }
 }

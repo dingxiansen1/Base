@@ -7,11 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.dd.base.R
 import com.dd.base.config.AppConstants
 import com.dd.base.utils.SpHelper
 import com.dd.base.utils.darkMode
 import com.dd.base.utils.statusBarColorRes
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 abstract class BaseVDActivity <B : ViewDataBinding>(@LayoutRes contentLayoutId: Int = 0) :
     AppCompatActivity(contentLayoutId){
@@ -25,16 +28,19 @@ abstract class BaseVDActivity <B : ViewDataBinding>(@LayoutRes contentLayoutId: 
         binding = DataBindingUtil.bind(rootView)!!
         binding.lifecycleOwner = this
         this.statusBarColorRes(R.color.background)
-        this.darkMode()
+        if (BaseApp.isNight){
+            this.darkMode(!BaseApp.isNight)
+        }
         initView()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
     }
 
     protected abstract fun initView()
 
+    fun launch(block:()->Unit){
+        lifecycleScope.launch(Dispatchers.IO) {
+            block.invoke()
+        }
+    }
 
     protected open fun <T : ViewModel?> getViewModel(modelClass: Class<T>): T {
         if (mActivityProvider == null) {
@@ -49,12 +55,4 @@ abstract class BaseVDActivity <B : ViewDataBinding>(@LayoutRes contentLayoutId: 
         return mActivityProvider!!.get(modelClass)
     }
 
-    fun updataNightModel(){
-        val isNight= !SpHelper.getBoolean(AppConstants.SpKey.NIGHT_MODE)
-        SpHelper.put(AppConstants.SpKey.NIGHT_MODE,isNight)
-        AppCompatDelegate.setDefaultNightMode(
-            if (isNight) AppCompatDelegate.MODE_NIGHT_YES//夜间模式
-            else AppCompatDelegate.MODE_NIGHT_NO//白天
-        )
-    }
 }
