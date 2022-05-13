@@ -15,12 +15,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        //阿里路由框架配置
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
 
     }
     buildFeatures {
@@ -46,18 +40,23 @@ dependencies {
 
     implementation project(path: ':network')
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     //kotlin 协程
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 
-
+    //ali路由
+    api 'com.alibaba:arouter-api:1.4.1'
     //MMKV SP存储
     api 'com.tencent:mmkv:1.0.23'
     api 'com.google.code.gson:gson:2.8.5'
-    //ali路由
-    api 'com.alibaba:arouter-api:1.4.1'
+    //App Startup
+    api "androidx.startup:startup-runtime:1.2.0-alpha01"
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+
+    debugImplementation "io.github.yvescheung:Uinspector:2.0.14"
 }

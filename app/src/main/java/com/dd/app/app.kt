@@ -1,6 +1,8 @@
 package com.dd.app
 
 import android.content.Context
+import com.alibaba.android.arouter.launcher.ARouter
+import com.dd.base.BuildConfig
 import com.dd.base.base.BaseApp
 import com.dd.base.toast.ToastX
 import com.dd.baseui.recyclerview.utils.BRV
@@ -15,6 +17,12 @@ class app : BaseApp() {
 
     override fun onCreate() {
         super.onCreate()
+        //阿里路由
+        if (BuildConfig.DEBUG) {  //debug模式开启日志
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
+        ARouter.init(this)
         mContext=this
         // 初始化BindingAdapter的默认绑定ID
         BRV.modelId = BR.m
@@ -44,4 +52,9 @@ class app : BaseApp() {
             ClassicsFooter(context)
         }
     }
+    override fun onTerminate() {
+        super.onTerminate()
+        ARouter.getInstance().destroy()
+    }
+
 }

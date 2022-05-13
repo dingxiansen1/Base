@@ -1,40 +1,22 @@
 package com.dd.base.base
 
 import android.app.Application
-import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import com.alibaba.android.arouter.launcher.ARouter
 import com.dd.base.config.AppConstants
 import com.dd.base.utils.SpHelper
-import com.dd.base.BuildConfig
-import com.tencent.mmkv.MMKV
 
 open class BaseApp :Application(){
 
     companion object{
         var isNight :Boolean = false
+
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        //阿里路由
-        if (BuildConfig.DEBUG) {  //debug模式开启日志
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
-
-        //MMKV初始化
-        MMKV.initialize(this)
-
         // 切换情景模式(夜间模式：白天：跟随系统)
         initNightMode()
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
-        ARouter.getInstance().destroy()
     }
 
     private fun initNightMode() {

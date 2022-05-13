@@ -13,12 +13,6 @@ interface AppConstants {
     object CacheKey{
         // 缓存有效期时长1天 数据刷新会重新刷新时长
         const val CACHE_SAVE_TIME_SECONDS = 86400
-        const val CACHE_HOME_BANNER = "cache_home_banner"
-        const val CACHE_HOME_ARTICLE = "cache_home_article"
-        const val CACHE_HOME_KEYWORD = "cache_home_keyword"
-        const val CACHE_SQUARE_LIST = "cache_square_list"
-        const val CACHE_PROJECT_SORT = "cache_project_sort"
-        const val CACHE_PROJECT_CONTENT = "cache_project_content"
     }
 
     /**
@@ -35,7 +29,7 @@ interface AppConstants {
             const val A_RECYCLER = "/main/RecycleActivity"
             const val A_EVENT = "/main/EventBusActivity"
             const val A_TOAST = "/main/ToastActivity"
-            const val A_NIGHT = "/main/ToastActivity"
+            const val A_NIGHT = "/main/NightAcitivity"
         }
     }
 }

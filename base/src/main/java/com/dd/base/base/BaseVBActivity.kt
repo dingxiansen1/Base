@@ -46,13 +46,6 @@ abstract class BaseVBActivity<VB: ViewBinding> : AppCompatActivity() {
     }
 
 
-    protected open fun <T : ViewModel?> getViewModel(modelClass: Class<T>): T {
-        if (mActivityProvider == null) {
-            mActivityProvider = ViewModelProvider(this)
-        }
-        return mActivityProvider!![modelClass]
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         ActivityManage.removeActivity(this)

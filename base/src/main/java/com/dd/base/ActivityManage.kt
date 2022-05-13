@@ -37,7 +37,7 @@ object ActivityManage {
     fun isExist(activityClass: Class<*>): Boolean {
         var result = false
         for (item in activities) {
-            if (null != item && item.javaClass == activityClass) {
+            if (item.javaClass == activityClass) {
                 result = true
                 break
             }
@@ -47,7 +47,7 @@ object ActivityManage {
 
     fun getByClass(activity: Class<*>): AppCompatActivity? {
         for (item in activities) {
-            if (null != item && item.javaClass == activity) {
+            if (item.javaClass == activity) {
                 return item
             }
         }
